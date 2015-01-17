@@ -8,3 +8,5 @@ meteor-platform
 autopublish
 insecure
 jquery
+accounts-password
+accounts-ui
