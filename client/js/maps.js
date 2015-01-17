@@ -16,10 +16,10 @@ if (Meteor.isClient) {
         // We can use the `ready` callback to interact with the map API on3ce the map is ready.
         GoogleMaps.ready('gmap', function(map) {
           // Add a marker to the map once it's ready
-          var marker = new google.maps.Marker({
-            position: map.options.center,
-            map: map.instance
-          });
+          // var marker = new google.maps.Marker({
+          //   position: map.options.center,
+          //   map: map.instance
+          // });
         });
 
         // Map initialization options
