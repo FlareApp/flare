@@ -28,7 +28,19 @@ Router.route('/:channelname/map', function () {
 
 Router.route('/:channelname/settings', function () {
     var name = this.params.channelname;
-    this.render('page_channel_settings');
+    this.render('page_channel_settings', {
+        data: Channels.findOne({ name: name })
+    });
+
+    Template.page_channel_settings.events({
+        'click #member-add': function(e){
+            var $nameField = $('#member-add-name');
+            var memberName = $nameField.val();
+            //
+
+            $nameField.val('');
+        }
+    })
 });
 
 /*

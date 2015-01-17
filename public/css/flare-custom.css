@@ -17,6 +17,10 @@ body {
     padding-top: 60px;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
