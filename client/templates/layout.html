@@ -26,10 +26,18 @@
     </nav>
 
     <div class="container">
-        {{#if currentUser}}
-            {{> yield}}
-        {{else}}
-            {{> loginButtons}}
-        {{/if}}
+        {{> yield}}
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                {{#if currentUser}}
+                    Lookin' good today, {{> loginButtons}}.
+                {{else}}
+                    {{> loginButtons}} to make your own channels. 
+                {{/if}}
+            </p>
+        </div>
+    </footer>
 </template>
