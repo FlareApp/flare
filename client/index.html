@@ -22,42 +22,40 @@
                     <span class="fa fa-fire"></span>
                     Flare
                 </a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="nav">
-                <ul class="nav navbar-nav">
-                    <li><a>{{> loginButtons}}</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right nav-tabs" role="tablist" id="main-tabs">
-                    <li role="presentation" class="active">
-                        <a href="#channels" role="tab" data-toggle="tab">Channel</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#channel-settings" role="tab" data-toggle="tab">Channel settings</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#map" role="tab" data-toggle="tab">Map</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse navbar-right" id="nav">
+                    <ul class="nav navbar-nav">
+                        <li><a>{{> loginButtons}}</a></li>
+                        <li id="carousel-left"><a><span class="fa fa-chevron-left"></span></a></li>
+                        <li id="carousel-right"><a><span class="fa fa-chevron-right"></span></a></li>
+                    </ul>
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
 
     <div class="container">
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="channels">
-                {{> page_channels }}
+        <!-- Carousel
+        ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="container">
+                        {{> page_channels }}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                            {{> page_channel_settings }}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                            {{> page_map }}
+                    </div>
+                </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="channel-settings">
-                {{> page_channel_settings }}
-            </div>
-            <div role="tabpanel" class="tab-pane" id="map">
-                {{> page_map }}
-            </div>
-        </div>
+        </div><!-- /.carousel -->
     </div>
 </body>
