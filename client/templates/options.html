@@ -1,3 +1,5 @@
 <template name="page_options">
-    
+    {{#if currentUser}}
+        Lookin' good, {{> loginButtons}}.
+    {{/if}}
 </template>

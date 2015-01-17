@@ -2,8 +2,8 @@
 if (window.location.origin === "http://localhost:3000") {
     environment = 'development';
 } else{
-    environment = 'production' ;   
-}; 
+    environment = 'production' ;
+};
 
 console.log("PennApps");
 
@@ -28,15 +28,24 @@ Router.route('/', function () {
     setSwipeHandlers(function(){
         // left
     }, function(){
-        // right
+        Router.go('/options');
     });
 });
 
-/*
 Router.route('/options', function () {
+    // must be logged in!
+    if(!Meteor.user()){
+        this.redirect("/");
+    }
+
     this.render('page_options');
+
+    setSwipeHandlers(function(){
+        Router.go('/');
+    }, function(){
+        // right
+    });
 });
-*/
 
 Router.route('/:channelname', function () {
     var name = this.params.channelname;
