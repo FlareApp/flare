@@ -1,4 +1,6 @@
 <template name="page_options">
+    {{#contentFor "title"}} Options {{/contentFor}}
+
     {{#if currentUser}}
         Lookin' good, {{> loginButtons}}.
     {{/if}}
