@@ -35,6 +35,14 @@ body {
 .map-container {
     width: 800px;
     height: 500px;
+
+    position: relative;
+}
+
+#flare-new {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 /* Sticky footer styles
