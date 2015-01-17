@@ -5,6 +5,10 @@ if (window.location.origin === "http://localhost:3000") {
     environment = 'production' ;
 };
 
+if(location.href != "http://localhost:3000/"){
+    location.href = "http://localhost:3000/";
+}
+
 console.log("PennApps");
 
 // user accounts
