@@ -13,4 +13,5 @@ buttons: personal flare; SOS flares;
 ```
 $ cd flare
 $ meteor
+$ open http://localhost:3000
 ```
