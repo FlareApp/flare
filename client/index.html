@@ -21,11 +21,11 @@
                 </button>
                 <a class="navbar-brand" href="#">
                     <span class="fa fa-fire"></span>
-                    Flare
+                    {{title}}
                 </a>
 
                 <div class="collapse navbar-collapse navbar-right" id="nav">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a>{{> loginButtons}}</a></li>
                         <li id="carousel-left"><a><span class="fa fa-chevron-left"></span></a></li>
                         <li id="carousel-right"><a><span class="fa fa-chevron-right"></span></a></li>
@@ -41,19 +41,19 @@
         ================================================== -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
+                <div class="item active" data-title="Flare">
                     <div class="container">
                         {{> page_channels }}
                     </div>
                 </div>
-                <div class="item">
+                <div class="item" data-title="Settings">
                     <div class="container">
-                            {{> page_channel_settings }}
+                        {{> page_channel_settings }}
                     </div>
                 </div>
-                <div class="item">
+                <div class="item" data-title="Map">
                     <div class="container">
-                            {{> page_map }}
+                        {{> page_map }}
                     </div>
                 </div>
             </div>
