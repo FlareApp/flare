@@ -45,30 +45,11 @@ Router.route('/channel/:channelname/settings', function () {
     }
 
     var channel = Channels.findOne({ name: name });
-    var id = channel._id;
     this.render('page_channel_settings', {
         data: channel
     });
 
-    Template.page_channel_settings.events({
-        'click #member-add': function(e){
-            var $nameField = $('#member-add-name');
-            var memberName = $nameField.val();
-
-            Channels.update(id, {
-                $push: { members: memberName }
-            });
-
-            $nameField.val('');
-        },
-        'click .member-remove': function(e){
-            var username = $(e.target).data('username');
-        },
-        'submit #channel-settings': function(e){
-
-            return false;
-        }
-    })
+    currentChannelId = channel._id;
 });
 
 /*
@@ -107,3 +88,7 @@ Template.body.helpers({
     }
 });
 */
+
+Template.registerHelper("join", function(input){
+    return input.join(", ");
+});

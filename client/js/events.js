@@ -21,3 +21,27 @@ Template.page_channels.events({
         return false;
     }
 });
+
+
+Template.page_channel_settings.events({
+    'click #member-add': function(e){
+        var $nameField = $('#member-add-name');
+        var memberName = $nameField.val();
+
+        Channels.update(currentChannelId, {
+            $push: { members: memberName }
+        });
+
+        $nameField.val('');
+    },
+    'click .member-remove': function(e){
+        var username = $(e.target).data('username');
+        Channels.update(currentChannelId, {
+            $pull: { members: username }
+        })
+    },
+    'submit #channel-settings': function(e){
+
+        return false;
+    }
+});
