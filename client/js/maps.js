@@ -1,7 +1,6 @@
 if (Meteor.isClient) {
   Meteor.startup(function() {
     GoogleMaps.load();
-    Geolocation.load();
     Tracker.autorun(function () {
       if (Geolocation.error() !== null) {
         var center = new google.maps.LatLng(Geolocation.latLng().lat, Geolocation.latLng().lng);
