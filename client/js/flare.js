@@ -38,6 +38,12 @@ Router.route('/channel/:channelname/map', function () {
 
 Router.route('/channel/:channelname/settings', function () {
     var name = this.params.channelname;
+
+    // must be logged in!
+    if(!Meteor.user()){
+        this.redirect("/channel/" + name + "/map");
+    }
+
     var channel = Channels.findOne({ name: name });
     this.render('page_channel_settings', {
         data: channel
