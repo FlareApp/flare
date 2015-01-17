@@ -1,3 +1,10 @@
+// environment can either be production or development
+if (window.location.origin === "http://localhost:3000") {
+    environment = 'development';
+} else{
+    environment = 'production' ;   
+}; 
+
 console.log("PennApps");
 
 // user accounts
