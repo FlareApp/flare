@@ -10,11 +10,8 @@ insecure
 jquery
 accounts-password
 accounts-ui
-<<<<<<< HEAD
 iron:router
 underscore
 pahans:underscore-helper
-=======
 dburles:google-maps
 mdg:geolocation
->>>>>>> gmaps
