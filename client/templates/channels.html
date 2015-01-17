@@ -1,32 +1,24 @@
 <template name="page_channels">
 
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="New channel">
+        <span class="input-group-addon">/</span>
+        <input type="text" class="form-control" placeholder="New channel" id="channel-add-name">
         <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="button" id="channel-add">
                 <span class="fa fa-plus fa-lg"></span>
             </button>
         </span>
     </div>
 
     <br>
-
     <div class="list-group">
-        <a href="/pennapps" class="list-group-item">
-            <p class="list-group-item-text">
-                /pennapps
-            </p>
-        </a>
-        <a href="#" class="list-group-item">
-            <p class="list-group-item-text">
-                /philly
-            </p>
-        </a>
-        <a href="#" class="list-group-item">
-            <p class="list-group-item-text">
-                /hackteam
-            </p>
-        </a>
+        {{#each channels}}
+            <a href="/{{name}}" class="list-group-item">
+                <p class="list-group-item-text">
+                    /{{name}}
+                </p>
+            </a>
+        {{/each}}
     </div>
 
 </template>
