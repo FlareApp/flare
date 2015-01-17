@@ -45,9 +45,6 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container {
-    padding: 60px 15px 0;
-}
 .footer p {
     margin: 20px 0;
     text-align: center;
