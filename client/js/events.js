@@ -2,18 +2,22 @@
 
 // channels
 Template.page_channels.events({
-    'click #channel-add': function(){
+    'submit #channel-add': function(e){
         // add that channel
-        var channelName = $('#channel-add-name').val().toLowerCase();
+        var channelName = e.target.name.value;
+
         Channels.insert({
             name: channelName,
             flares: [],
-            members: []
+            members: [],
+            created: new Date()
         });
 
-        $('#channel-add-name').val('');
+        e.target.name.value = '';
 
         // go to its settings screen
         Router.go('/' + channelName);
+
+        return false;
     }
 });
