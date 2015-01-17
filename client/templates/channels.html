@@ -1,4 +1,14 @@
 <template name="page_channels">
+    {{#contentFor "title"}} Flare {{/contentFor}}
+
+    {{#unless currentUser}}
+    <div class="well">
+        <p class="text-muted text-center">
+            {{> loginButtons}} to make your own channels.
+
+        </p>
+    </div>
+    {{/unless}}
 
     {{#if currentUser}}
         <form id="channel-add">

@@ -21,6 +21,30 @@ body {
     cursor: pointer;
 }
 
+/* Header */
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-brand {
+    width: 100%;
+    text-align: center;
+}
+
+/* Map */
+.map-container {
+    width: 800px;
+    height: 500px;
+
+    position: relative;
+}
+
+#flare-new {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
