@@ -1,14 +1,16 @@
 <template name="page_channels">
 
-    <div class="input-group">
-        <span class="input-group-addon">/</span>
-        <input type="text" class="form-control" placeholder="New channel" id="channel-add-name">
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="button" id="channel-add">
-                <span class="fa fa-plus fa-lg"></span>
-            </button>
-        </span>
-    </div>
+    <form id="channel-add">
+        <div class="input-group">
+            <span class="input-group-addon">/</span>
+            <input type="text" class="form-control" placeholder="New channel" name="name">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="fa fa-plus fa-lg"></span>
+                </button>
+            </span>
+        </div>
+    </form>
 
     <br>
     <div class="list-group">
