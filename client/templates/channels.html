@@ -18,9 +18,10 @@
     <div class="list-group">
         {{#each channels}}
             <a href="/{{name}}" class="list-group-item">
-                <p class="list-group-item-text">
-                    /{{name}}
-                </p>
+                <div class="list-group-item-text">
+                    <h3>/{{name}}</h3>
+                    <p class="text-muted">{{members}}</p>
+                </div>
             </a>
         {{/each}}
     </div>

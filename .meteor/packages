@@ -11,3 +11,5 @@ jquery
 accounts-password
 accounts-ui
 iron:router
+underscore
+pahans:underscore-helper

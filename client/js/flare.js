@@ -45,6 +45,7 @@ Router.route('/channel/:channelname/settings', function () {
     }
 
     var channel = Channels.findOne({ name: name });
+    var id = channel._id;
     this.render('page_channel_settings', {
         data: channel
     });
@@ -53,9 +54,15 @@ Router.route('/channel/:channelname/settings', function () {
         'click #member-add': function(e){
             var $nameField = $('#member-add-name');
             var memberName = $nameField.val();
-            //
+
+            Channels.update(id, {
+                $push: { members: memberName }
+            });
 
             $nameField.val('');
+        },
+        'click .member-remove': function(e){
+            var username = $(e.target).data('username');
         },
         'submit #channel-settings': function(e){
 

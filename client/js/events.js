@@ -9,7 +9,7 @@ Template.page_channels.events({
         Channels.insert({
             name: channelName,
             flares: [],
-            members: [],
+            members: [ Meteor.user().username ],
             created: new Date()
         });
 

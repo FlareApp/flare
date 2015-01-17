@@ -11,12 +11,15 @@
 
         <div class="well">
             <ul class="list-group">
-                <li class="list-group-item">
-                    alimalik
-                    <span class="pull-right">
-                        <span class="fa fa-remove fa-lg text-danger clickable"></span>
-                    </span>
-                </li>
+                {{#each members}}
+                    <li class="list-group-item">
+                        {{this}}
+                        <span class="pull-right">
+                            <span class="fa fa-remove fa-lg text-danger clickable member-remove"
+                                data-username="{{this}}"></span>
+                        </span>
+                    </li>
+                {{/each}}
             </ul>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Add member" id="member-add-name">
