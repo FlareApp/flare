@@ -1,12 +1,41 @@
 <template name="page_channels">
-    <ul>
-        <div class="row">
-            <div class="col-xs-4">
-            <li>Person 1</li>
+    {{#contentFor "title"}} Flare {{/contentFor}}
+
+    {{#unless currentUser}}
+    <div class="well">
+        <p class="text-muted text-center">
+            {{> loginButtons}} to make your own channels.
+
+        </p>
+    </div>
+    {{/unless}}
+
+    {{#if currentUser}}
+        <form id="channel-add">
+            <div class="input-group">
+                <span class="input-group-addon">/</span>
+                <input type="text" class="form-control" placeholder="New channel" name="name">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <span class="fa fa-plus fa-lg"></span>
+                    </button>
+                </span>
             </div>
-            <div class="col-xs-8">
-            <li><img src="http://placehold.it/250x250"></li>
-            </div>
-        </div>
-    </ul>
+        </form>
+    {{/if}}
+
+    <br>
+    <div class="list-group">
+        {{#each channels}}
+            <a href="/{{name}}" class="list-group-item">
+                <div class="list-group-item-text">
+                    <h3>/{{name}}</h3>
+                    <p class="text-muted">
+                        {{join members}}
+                    </p>
+                </div>
+            </a>
+        {{/each}}
+    </div>
+
 </template>

@@ -1,63 +1,17 @@
 <head>
-    <title>flare</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Flare</title>
 
     <link rel="stylesheet" href="css/bootstrap-simplex.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/flare-custom.css">
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.touch.min.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <span class="fa fa-fire"></span>
-                    Flare
-                </a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="nav">
-                <ul class="nav navbar-nav">
-                    <li><a>{{> loginButtons}}</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right nav-tabs" role="tablist" id="main-tabs">
-                    <li role="presentation" class="active">
-                        <a href="#channels" role="tab" data-toggle="tab">Channel</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#channel-settings" role="tab" data-toggle="tab">Channel settings</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#map" role="tab" data-toggle="tab">Map</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <div class="container">
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="channels">
-                {{> page_channels }}
-            </div>
-            <div role="tabpanel" class="tab-pane" id="channel-settings">
-                {{> page_channel_settings }}
-            </div>
-            <div role="tabpanel" class="tab-pane" id="map">
-                {{> page_map }}
-            </div>
-        </div>
-    </div>
 </body>
