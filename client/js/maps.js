@@ -26,15 +26,13 @@ if (Meteor.isClient) {
         if (environment === 'production') {
           var lat = 0
           var lng = 0
-          var zoom_level = 16
         } else{
           var lat = 39.958
           var lng = -75.195
-          var zoom_level = 12
         };
         return {
           center: new google.maps.LatLng(Geolocation.latLng().lat || lat, Geolocation.latLng().lng) || lng,
-          zoom: 8
+          zoom: 18
         };
       }
     }
