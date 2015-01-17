@@ -24,11 +24,19 @@ Router.route('/', function () {
             }
         }
     });
+
+    setSwipeHandlers(function(){
+        // left
+    }, function(){
+        // right
+    });
 });
 
+/*
 Router.route('/options', function () {
     this.render('page_options');
 });
+*/
 
 Router.route('/:channelname', function () {
     var name = this.params.channelname;
@@ -40,6 +48,12 @@ Router.route('/channel/:channelname/map', function () {
     var name = this.params.channelname;
     this.render('page_map', {
         data: Channels.findOne({ name: name })
+    });
+
+    setSwipeHandlers(function(){
+        Router.go('/channel/' + name + '/settings');
+    }, function(){
+        Router.go('/');
     });
 });
 
@@ -57,7 +71,21 @@ Router.route('/channel/:channelname/settings', function () {
     });
 
     currentChannelId = channel._id;
+
+    setSwipeHandlers(function(){
+        Router.go('/');
+    }, function(){
+        Router.go("/channel/" + name + "/map");
+    });
 });
+
+Meteor.startup(function(){
+    $('body').enableTouch();
+});
+
+function setSwipeHandlers(left, right){
+    $('body').off('swipeLeft').on('swipeLeft', left).off('swipeRight').on('swipeRight', right);
+}
 
 /*
 // handle carousel
