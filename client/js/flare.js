@@ -22,11 +22,7 @@ Router.route('/:channelname', function () {
 Router.route('/:channelname/map', function () {
     var name = this.params.channelname;
     this.render('page_map', {
-        data: function(){
-            return {
-                channelName: name
-            }
-        }
+        data: Channels.findOne({ name: name })
     });
 });
 

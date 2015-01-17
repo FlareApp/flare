@@ -14,6 +14,6 @@ Template.page_channels.events({
         $('#channel-add-name').val('');
 
         // go to its settings screen
-        
+        Router.go('/' + channelName);
     }
 });
