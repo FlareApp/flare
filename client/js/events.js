@@ -15,8 +15,8 @@ Template.page_channels.events({
 
         e.target.name.value = '';
 
-        // go to its settings screen
-        Router.go('/' + channelName);
+        // go to its screen
+        Router.go('/channel/' + channelName + '/settings');
 
         return false;
     }

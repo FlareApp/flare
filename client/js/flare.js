@@ -1,5 +1,10 @@
 console.log("PennApps");
 
+// user accounts
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+});
+
 Router.configure({
     layoutTemplate: 'layout'
 });
@@ -14,22 +19,28 @@ Router.route('/', function () {
     });
 });
 
-Router.route('/:channelname', function () {
-    var name = this.params.channelname;
-    this.redirect('/' + name + '/map');
+Router.route('/options', function () {
+    this.render('page_options');
 });
 
-Router.route('/:channelname/map', function () {
+Router.route('/:channelname', function () {
+    var name = this.params.channelname;
+
+    this.redirect('/channel/' + name + '/map');
+});
+
+Router.route('/channel/:channelname/map', function () {
     var name = this.params.channelname;
     this.render('page_map', {
         data: Channels.findOne({ name: name })
     });
 });
 
-Router.route('/:channelname/settings', function () {
+Router.route('/channel/:channelname/settings', function () {
     var name = this.params.channelname;
+    var channel = Channels.findOne({ name: name });
     this.render('page_channel_settings', {
-        data: Channels.findOne({ name: name })
+        data: channel
     });
 
     Template.page_channel_settings.events({
@@ -39,6 +50,10 @@ Router.route('/:channelname/settings', function () {
             //
 
             $nameField.val('');
+        },
+        'submit #channel-settings': function(e){
+
+            return false;
         }
     })
 });
