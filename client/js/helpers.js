@@ -82,21 +82,21 @@ Template.page_flare_follow.helpers({
             lng: currentFlare.location.lon
         };
 
-        return 20;
-    },
-
-    compass: function(){
-        var heading = Session.get('cordovaHeading').magneticHeading;
-        return Math.round(heading);
+        return Math.round(angleBetween(myLocation, toLocation));
     },
 
     arrowDirection: function(){
-        var realAngle = 20;
-        var myAngle = Math.round(Session.get('cordovaHeading').magneticHeading);
+        var myLocation = Geolocation.latLng(); //has .lat, .lng
+        var toLocation = {
+            lat: currentFlare.location.lat,
+            lng: currentFlare.location.lon
+        };
 
-        console.log(realAngle - myAngle);
+        var realAngle = angleBetween(myLocation, toLocation);
+        var myAngle = Session.get('cordovaHeading').magneticHeading;
 
-        return realAngle - myAngle;
+        var angle = Math.round(realAngle - myAngle);
+        return angle;
     },
 
     isCordova: function(){

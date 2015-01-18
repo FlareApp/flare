@@ -15,3 +15,21 @@ window.getDistanceKm = function(coords1, coords2) {
 window.deg2rad = function(deg) {
     return deg * (Math.PI/180);
 }
+
+/*
+    Returns initial bearing as you go from coords1 to coords2. North = 0.
+*/
+window.angleBetween = function(coords1, coords2){
+    var c1 = coords1;
+    var c2 = coords2;
+    var dy = c2.lat - c1.lat;
+    var dx = Math.cos(Math.PI/180 * c1.lat)*(c2.lng - c1.lng);
+    var angle = Math.atan2(dy, dx);
+
+    var deg = angle * 180 / Math.PI;
+    deg = 90 - deg;
+    if(deg < 0){
+        deg = 360 + deg;
+    }
+    return deg;
+}
