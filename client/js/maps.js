@@ -5,7 +5,7 @@ function placeMarker(location) {
     map: GoogleMaps.maps.gmap.instance
   });
 }
-if (Meteor.isClient) {
+
   Meteor.startup(function() {
     GoogleMaps.load();
     Tracker.autorun(function () {
@@ -14,12 +14,7 @@ if (Meteor.isClient) {
         var center = new google.maps.LatLng(Geolocation.latLng().lat, Geolocation.latLng().lng);
         GoogleMaps.maps.gmap.instance.panTo(center);
       };
-    })
-    // function resizeIframe() {
-    //   $('canvas')window.innerWidth
-    //   window.innerHeight
-    // }
-    // Detect clicks on maps
+    });
   });
   Template.page_map.helpers({
     gmapOptions: function() {
@@ -27,15 +22,19 @@ if (Meteor.isClient) {
       if (GoogleMaps.loaded()) {
         // We can use the `ready` callback to interact with the map API on3ce the map is ready.
         GoogleMaps.ready('gmap', function(map) {
-          google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
-            placeMarker(event.latLng);
-          })
-          // Add a marker to the map once it's ready
-          // var marker = new google.maps.Marker({
-          //   position: map.options.center,
-          //   map: map.instance
-          // });
-      });
+
+            // add all the flares yo
+            var flareIds = Channels.findOne(currentChannelId).flares;
+            _.each(flareIds, function(id){
+                var flare = Flares.findOne(id);
+                var location = {
+                    lat: flare.location.lat,
+                    lng: flare.location.lon
+                };
+
+                placeMarker(location);
+            });
+        });
 
         // Map initialization options
         if (environment === 'production') {
@@ -52,4 +51,3 @@ if (Meteor.isClient) {
       }
     }
   });
-}
