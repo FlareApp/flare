@@ -67,7 +67,7 @@ Template.page_channel_settings.events({
             $pull: { members: username }
         })
     },
-    'submit #channel-settings': function(e){
+    'submit #settings-permissions': function(e){
 
         return false;
     }
