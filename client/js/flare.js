@@ -20,10 +20,31 @@ Router.configure({
 });
 
 Router.route('/', function () {
+
+    var allChannels = Channels.find({}, {sort: {created: -1}}).fetch();
+    var filteredChannels = _.filter(allChannels, function(channel){
+        // which channels can be seen?
+
+        // public is OK to read
+        if(channel.readable == PERMISSION_EVERYONE){
+            return true;
+        }
+
+        // private, where user is among members, is OK
+        var username = Meteor.user() ? Meteor.user().username : null;
+        var included = _.contains(channel.members, username);
+        if(channel.readable == PERMISSION_MEMBERS && username && included){
+            return true;
+        }
+
+        // no dice
+        return false;
+    });
+
     this.render('page_channels', {
         data: function(){
             return {
-                channels: Channels.find({}, {sort: {created: -1}})
+                channels: filteredChannels
             }
         }
     });

@@ -3,29 +3,6 @@ Template.page_channels.helpers({
         // returns current location
         return Geolocation.latLng();
     },
-    readable: function(context, options){
-        // returns true if the user can see a channel
-
-        return true;
-
-        /*
-        // true if it's visible to everyone
-        var public = channel.readable == PERMISSION_EVERYONE;
-        if(public){
-            return true;
-        }
-
-        // also if it's members only AND person is in the users list
-        var membersOnly = channel.readable == PERMISSION_MEMBERS;
-        var username = Meteor.user() ? Meteor.user().username || null;
-        var included = _.contains(channel.members, username);
-        if(membersOnly && username && included){
-            return true;
-        }
-
-        return false;
-        */
-    }
 });
 
 // Session.activeFlareId = id of flare to show info about
