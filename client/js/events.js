@@ -52,7 +52,7 @@ Template.page_map.events({
     'submit #flare-edit': function(e) {
         var text = e.target.text.value;
         var imageURL = e.target.imageURL.value;
-
+        
         // update the flare
         Flares.update(Session.get('lastFlareId'), {
             $set: {
