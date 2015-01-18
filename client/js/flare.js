@@ -10,6 +10,11 @@ if(location.href.indexOf(localhost) > -1 && location.href != localhost){
     location.href = localhost;
 }
 
+var localhost = "http://flare.meteor.com/";
+if(location.href.indexOf(localhost) > -1 && location.href != localhost){
+    location.href = localhost;
+}
+
 // user accounts
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
