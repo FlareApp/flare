@@ -89,10 +89,6 @@ Router.route('/channel/:channelname/settings', function () {
 
     currentChannelId = channel._id;
 
-    // load settings
-    var permissionsForm = $('#settings-permissions').get(0);
-    permissionsForm.settingsReadable.value = channel.readable;
-
     setSwipeHandlers(function(){
         Router.go('/');
     }, function(){

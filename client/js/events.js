@@ -68,7 +68,55 @@ Template.page_channel_settings.events({
         })
     },
     'submit #settings-permissions': function(e){
-
+        t = e.target;
+        var readable = e.target.settingsReadable.value;
+        var writable = e.target.settingsWritable.value;
+        Channels.update(currentChannelId, {
+            $set: { readable: readable, writable: writable }
+        });      
         return false;
     }
+});
+
+Template.page_channel_settings.helpers({
+    isReadableEveryone: function(){
+        if(currentChannelId){
+            if(Channels.findOne(currentChannelId).readable == PERMISSION_EVERYONE){
+                return "checked";
+            }
+            else{
+                return "";
+            }
+        }
+    },
+    isReadableMembers: function(){
+        if(currentChannelId){
+            if(Channels.findOne(currentChannelId).readable == PERMISSION_MEMBERS){
+                return "checked";
+            }
+            else{
+                return "";
+            }
+        }
+    },
+    isWritableEveryone: function(){
+        if(currentChannelId){
+            if(Channels.findOne(currentChannelId).writable == PERMISSION_EVERYONE){
+                return "checked";
+            }
+            else{
+                return "";
+            }
+        }
+    },
+    isWritableMembers: function(){
+        if(currentChannelId){
+            if(Channels.findOne(currentChannelId).writable == PERMISSION_MEMBERS){
+                return "checked";
+            }
+            else{
+                return "";
+            }
+        }
+    },
 });
