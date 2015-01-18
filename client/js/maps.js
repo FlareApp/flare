@@ -1,9 +1,15 @@
 // this accepts the format {lat: 0.0, lng: 0.0}
-function placeMarker(location) {
+function placeMarker(location, id) {
   var marker = new google.maps.Marker({
     position: location,
+    animation: google.maps.Animation.DROP,
+    // content: contentString,
     map: GoogleMaps.maps.gmap.instance
   });
+  marker.metadata = {type: "point", id: 1};
+  google.maps.event.addListener(marker, 'click', function() {
+    console.log(marker.metadata.id);
+  })
 }
 
 Meteor.startup(function() {
@@ -16,11 +22,12 @@ Meteor.startup(function() {
     };
   });
 });
+
 Template.page_map.helpers({
   gmapOptions: function() {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
-        // We can use the `ready` callback to interact with the map API on3ce the map is ready.
+        // We can use the `ready` callback to interact with the map API once the map is ready.
         GoogleMaps.ready('gmap', function(map) {
           google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
             placeMarker(event.latLng);
@@ -50,6 +57,7 @@ Template.page_map.helpers({
         };
         return {
           mapTypeControl: false,
+          draggable: true,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           // disableDefaultUI: true,
           center: new google.maps.LatLng(Geolocation.latLng().lat || lat, Geolocation.latLng().lng) || lng,
