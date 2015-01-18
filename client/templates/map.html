@@ -19,13 +19,13 @@
     {{#with activeFlare}}
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><span class="fa fa-fire"></span> Edit Flare</h3>
+                <h3 class="panel-title"><span class="fa fa-pencil"></span> Edit Flare</h3>
             </div>
             <div class="panel-body">
 
                 <p class="text-muted">
                     <span class="fa fa-globe">
-                        {{location.lat}}, {{location.lon}}
+                        {{formatLat location.lat}}, {{formatLon location.lon}}
                     </span>
                 </p>
 
@@ -36,6 +36,8 @@
                             <input name="text" class="form-control" placeholder="A description of this Flare">
                         </div>
                     </div>
+
+                    <br>
 
                     <button class="btn btn-primary btn-block" type="submit">
                         Save

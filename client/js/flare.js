@@ -103,7 +103,3 @@ Meteor.startup(function(){
 function setSwipeHandlers(left, right){
     $('body').off('swipeLeft').on('swipeLeft', left).off('swipeRight').on('swipeRight', right);
 }
-
-Template.registerHelper("join", function(input){
-    return input.join(", ");
-});
