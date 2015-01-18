@@ -77,5 +77,10 @@ Template.page_flare_follow.helpers({
         var toLocation = { lat: 40.7127, lng: -74.0059 };
 
         return 20;
+    },
+
+
+    isCordova: function(){
+        return !!Session.get('cordova');
     }
 });
