@@ -87,11 +87,19 @@ Router.route('/channel/:channelname/map', function () {
 
     currentChannelId = channel._id;
 
-    setSwipeHandlers(function(){
+    setSwipeHandlers(function(e){
+        console.log(window.e = e);
         Router.go('/channel/' + name + '/settings');
-    }, function(){
+    }, function(e){
+        console.log(window.e = e);
         Router.go('/');
     });
+
+    _.delay(function(){
+        $('.map-container').enableTouch();
+        $('.map-container').on('swipeLeft', function(){ return false; });
+        $('.map-container').on('swipeRight', function(){ return false; });
+    }, 100);
 });
 
 Router.route('/channel/:channelname/settings', function () {

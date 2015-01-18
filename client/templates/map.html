@@ -1,9 +1,6 @@
 <template name="page_map">
     {{#contentFor "title"}} Map {{/contentFor}}
 
-    {{name}}
-    Map yo <a href="/channel/{{name}}/settings">Settings</a>
-
     <div class="map-container">
     	{{> googleMap name="gmap" options=gmapOptions}}
 
@@ -21,7 +18,7 @@
     {{#with activeFlare}}
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><span class="fa fa-pencil"></span> Edit Flare</h3>
+                <h3 class="panel-title"><span class="fa fa-pencil"></span> Edit the Flare you just sent</h3>
             </div>
             <div class="panel-body">
 
@@ -49,11 +46,5 @@
         </div>
     {{/with}}
 {{/if}}
-
-{{#each flares}}
-    <a href="/flare/{{this}}/follow">
-        Follow flare
-    </a><br>
-{{/each}}
 
 </template>
