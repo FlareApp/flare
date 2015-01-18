@@ -18,7 +18,7 @@ function placeMarker(flare) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-      Router.go('/flare/' + marker.id + '/follow');
+      openFlareWindow(marker.id);
   })
 }
 

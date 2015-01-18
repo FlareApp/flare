@@ -29,7 +29,7 @@ Template.page_map.events({
     'click #flare-new': function(e){
         var location = Geolocation.latLng(); // has .lat and .lng
         var creator = Meteor.user() ? Meteor.user().username : null;
-        var text = "yo";
+        var text = null;
 
         // Add a flare
         var id = Flares.insert({
@@ -37,8 +37,8 @@ Template.page_map.events({
             location: { lat: location.lat, lon: location.lng },
             created: new Date(),
             duration: 24 * 60 * 60,
-            text: "yo",
-            media: []
+            text: text,
+            imageURL: null
         });
 
         // Tie it to the channel
@@ -47,19 +47,23 @@ Template.page_map.events({
         });
 
         // Set the active flare
-        Session.set('activeFlareId', id);
+        Session.set('lastFlareId', id);
     },
     'submit #flare-edit': function(e) {
-        // grab text
         var text = e.target.text.value;
+        var imageURL = e.target.imageURL.value;
 
         // update the flare
-        Flares.update(Session.get('activeFlareId'), {
-            $set: { text: text }
+        Flares.update(Session.get('lastFlareId'), {
+            $set: {
+                text: text,
+                imageURL: imageURL
+            }
         });
 
         // reset view
         e.target.text.value = '';
+        e.target.imageURL.value = '';
 
         return false;
     }

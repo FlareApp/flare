@@ -8,6 +8,9 @@ Template.page_channels.helpers({
 // Session.activeFlareId = id of flare to show info about
 
 Template.page_map.helpers({
+    lastFlare: function(){
+        return Flares.findOne(Session.get('lastFlareId'));
+    },
     activeFlare: function(){
         return Flares.findOne(Session.get('activeFlareId'));
     },

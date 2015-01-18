@@ -49,6 +49,9 @@ Router.route('/', function () {
         }
     });
 
+
+    Session.set('lastFlareId', null);
+
     setSwipeHandlers(function(){
         // left
     }, function(){
@@ -146,4 +149,10 @@ Meteor.startup(function(){
 
 function setSwipeHandlers(left, right){
     $('body').off('swipeLeft').on('swipeLeft', left).off('swipeRight').on('swipeRight', right);
+}
+
+window.openFlareWindow = function(flareId){
+    Session.set('activeFlareId', flareId);
+    $('#flare-modal').modal('show');
+    // Router.go('/flare/' + flareId + '/follow');
 }

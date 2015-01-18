@@ -21,6 +21,11 @@ body {
     cursor: pointer;
 }
 
+.modal-img{
+    max-width: 30%;
+    margin: 1em;
+}
+
 /* Header */
 .navbar-header {
     width: 100%;
