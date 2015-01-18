@@ -28,14 +28,16 @@
         <br>
         <div class="list-group">
             {{#each channels}}
-                <a href="/{{name}}" class="list-group-item">
-                    <div class="list-group-item-text">
-                        <h3>/{{name}}</h3>
-                        <p class="text-muted">
-                            {{join members}}
-                        </p>
-                    </div>
-                </a>
+                {{#if readable this}}
+                    <a href="/{{name}}" class="list-group-item">
+                        <div class="list-group-item-text">
+                            <h3>/{{name}}</h3>
+                            <p class="text-muted">
+                                {{join members}}
+                            </p>
+                        </div>
+                    </a>
+                {{/if}}
             {{/each}}
         </div>
     {{else}}
