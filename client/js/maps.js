@@ -1,3 +1,10 @@
+// this accepts the format {lat: 0.0, lng: 0.0}
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: GoogleMaps.maps.gmap.instance
+  });
+}
 if (Meteor.isClient) {
   Meteor.startup(function() {
     GoogleMaps.load();
