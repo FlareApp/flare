@@ -1,41 +1,51 @@
 <template name="page_channel_settings">
     {{#contentFor "title"}} Settings {{/contentFor}}
 
-    <form class="form-horizontal" id="channel-settings">
+    <div class="well">
+        <ul class="list-group">
+            {{#each members}}
+                <li class="list-group-item">
+                    {{this}}
+                    <span class="pull-right">
+                        <span class="fa fa-remove fa-lg text-danger clickable member-remove"
+                            data-username="{{this}}"></span>
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Add member" id="member-add-name">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="member-add">
+                    <span class="fa fa-plus fa-lg"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <form class="form-horizontal" id="settings-permissions">
         <div class="form-group">
-            <label class="col-sm-2 control-label">Channel name</label>
+            <label class="col-sm-2 control-label"><strong>Readable by</strong></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" value="{{name}}">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="settingsReadable" value="everyone">
+                        Everyone
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="settingsReadable" value="members">
+                        Members only
+                    </label>
+                </div>
             </div>
         </div>
 
-        <div class="well">
-            <ul class="list-group">
-                {{#each members}}
-                    <li class="list-group-item">
-                        {{this}}
-                        <span class="pull-right">
-                            <span class="fa fa-remove fa-lg text-danger clickable member-remove"
-                                data-username="{{this}}"></span>
-                        </span>
-                    </li>
-                {{/each}}
-            </ul>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Add member" id="member-add-name">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="member-add">
-                        <span class="fa fa-plus fa-lg"></span>
-                    </button>
-                </span>
-            </div>
-
-        </div>
-
-        <br>
-
-        <button type="submit" class="btn btn-primary btn-block">
+        <button class="btn btn-primary" type="btn-submit">
             Save
         </button>
     </form>
+
+
 </template>
