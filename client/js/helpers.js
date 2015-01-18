@@ -60,3 +60,40 @@ Template.registerHelper("formatLon", function(lon){
 
     return (Math.abs(lon)).toFixed(3) + "° " + direction;
 });
+
+// follow flare
+Template.page_flare_follow.helpers({
+    distance: function(){
+        var myLocation = Geolocation.latLng(); //has .lat, .lng
+        var toLocation = { lat: 40.7127, lng: -74.0059 };
+
+        var dist = getDistanceKm(myLocation, toLocation) * 1000;
+        var distString = dist.toFixed(3);
+
+        return distString;
+    },
+    heading: function(){
+        var myLocation = Geolocation.latLng(); //has .lat, .lng
+        var toLocation = { lat: 40.7127, lng: -74.0059 };
+
+        return 20;
+    },
+
+    compass: function(){
+        var heading = Session.get('cordovaHeading').magneticHeading;
+        return Math.round(heading);
+    },
+
+    arrowDirection: function(){
+        var realAngle = 20;
+        var myAngle = Math.round(Session.get('cordovaHeading').magneticHeading);
+
+        console.log(realAngle - myAngle);
+
+        return realAngle - myAngle;
+    },
+
+    isCordova: function(){
+        return !!Session.get('cordova');
+    }
+});

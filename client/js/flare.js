@@ -116,6 +116,13 @@ Router.route('/channel/:channelname/settings', function () {
     });
 });
 
+Router.route('/flare/:flareid/follow', function () {
+    var flare = Flares.findOne(this.params.flareid);
+    this.render('page_flare_follow', {
+        data: flare
+    });
+});
+
 Meteor.startup(function(){
     $('body').enableTouch();
 });
