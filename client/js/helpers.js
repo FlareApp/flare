@@ -79,10 +79,9 @@ Template.page_flare_follow.helpers({
         return 20;
     },
 
-    position: function(){
-        return Session.get('cordovaPosition');
+    heading: function(){
+        return Session.get('cordovaHeading').magneticHeading;
     },
-
 
     isCordova: function(){
         return !!Session.get('cordova');
