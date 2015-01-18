@@ -4,15 +4,47 @@
     {{name}}
     Map yo <a href="/channel/{{name}}/settings">Settings</a>
 
-<div class="map-container">
-	{{> googleMap name="gmap" options=gmapOptions}}
+    <div class="map-container">
+    	{{> googleMap name="gmap" options=gmapOptions}}
 
+        <span class="fa-stack fa-5x clickable" id="flare-new">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-fire fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
 
-    <span class="fa-stack fa-5x clickable" id="flare-new">
-        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-        <i class="fa fa-fire fa-stack-1x fa-inverse"></i>
-    </span>
-</div>
+<br>
+
+{{#if activeFlare}}
+    {{#with activeFlare}}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><span class="fa fa-fire"></span> Edit Flare</h3>
+            </div>
+            <div class="panel-body">
+
+                <p class="text-muted">
+                    <span class="fa fa-globe">
+                        {{location.lat}}, {{location.lon}}
+                    </span>
+                </p>
+
+                <form id="flare-edit">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><strong>Text</strong></label>
+                        <div class="col-sm-10">
+                            <input name="text" class="form-control" placeholder="A description of this Flare">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    {{/with}}
+{{/if}}
 
 {{#each flares}}
     {{this}}

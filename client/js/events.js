@@ -45,6 +45,9 @@ Template.page_map.events({
         Channels.update(currentChannelId, {
             $push: { flares: id }
         });
+
+        // Set the active flare
+        Session.set('activeFlareId', id);
     }
 });
 
@@ -73,7 +76,7 @@ Template.page_channel_settings.events({
         var writable = e.target.settingsWritable.value;
         Channels.update(currentChannelId, {
             $set: { readable: readable, writable: writable }
-        });      
+        });
         return false;
     }
 });

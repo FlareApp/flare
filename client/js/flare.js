@@ -107,9 +107,3 @@ function setSwipeHandlers(left, right){
 Template.registerHelper("join", function(input){
     return input.join(", ");
 });
-
-Template.page_channels.helpers({
-    location: function(){
-        return Geolocation.latLng();
-    }
-});
