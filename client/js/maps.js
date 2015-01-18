@@ -43,6 +43,9 @@ if (Meteor.isClient) {
           var lng = -75.195
         };
         return {
+          mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          // disableDefaultUI: true,
           center: new google.maps.LatLng(Geolocation.latLng().lat || lat, Geolocation.latLng().lng) || lng,
           zoom: 18
         };
