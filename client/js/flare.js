@@ -118,8 +118,17 @@ Router.route('/channel/:channelname/settings', function () {
 
 Router.route('/flare/:flareid/follow', function () {
     var flare = Flares.findOne(this.params.flareid);
+    currentFlare = flare;
+
     this.render('page_flare_follow', {
         data: flare
+    });
+
+    var channelName = Channels.findOne(currentChannelId).name;
+    setSwipeHandlers(function(){
+        Router.go("/channel/" + channelName + "/map");
+    }, function(){
+        Router.go("/channel/" + channelName + "/map");
     });
 });
 

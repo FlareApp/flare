@@ -15,10 +15,11 @@ function placeMarker(flare) {
     map: GoogleMaps.maps.gmap.instance,
     animation: google.maps.Animation.DROP,
     id: flare._id
-    google.maps.event.addListener(marker, 'click', function() {
-      Router.go('/flare/' + marker.metadata.id + '');
-    })
   });
+
+  google.maps.event.addListener(marker, 'click', function() {
+      Router.go('/flare/' + marker.id + '/follow');
+  })
 }
 
 Meteor.startup(function() {

@@ -65,7 +65,10 @@ Template.registerHelper("formatLon", function(lon){
 Template.page_flare_follow.helpers({
     distance: function(){
         var myLocation = Geolocation.latLng(); //has .lat, .lng
-        var toLocation = { lat: 40.7127, lng: -74.0059 };
+        var toLocation = {
+            lat: currentFlare.location.lat,
+            lng: currentFlare.location.lon
+        };
 
         var dist = getDistanceKm(myLocation, toLocation) * 1000;
         var distString = dist.toFixed(3);
@@ -74,7 +77,10 @@ Template.page_flare_follow.helpers({
     },
     heading: function(){
         var myLocation = Geolocation.latLng(); //has .lat, .lng
-        var toLocation = { lat: 40.7127, lng: -74.0059 };
+        var toLocation = {
+            lat: currentFlare.location.lat,
+            lng: currentFlare.location.lon
+        };
 
         return 20;
     },
