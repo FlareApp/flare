@@ -24,7 +24,7 @@ Router.route('/', function () {
     this.render('page_channels', {
         data: function(){
             return {
-                channels: Channels.find({})
+                channels: Channels.find({}, {sort: {created: -1}})
             }
         }
     });
