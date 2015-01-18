@@ -65,12 +65,17 @@ Template.registerHelper("formatLon", function(lon){
 Template.page_flare_follow.helpers({
     distance: function(){
         var myLocation = Geolocation.latLng(); //has .lat, .lng
-        var toLocation = { lat: 39, lng: -75 };
-        return 200;
+        var toLocation = { lat: 40.7127, lng: -74.0059 };
+
+        var dist = getDistanceKm(myLocation, toLocation) * 1000;
+        var distString = dist.toFixed(3);
+
+        return distString;
     },
     heading: function(){
         var myLocation = Geolocation.latLng(); //has .lat, .lng
-        var toLocation = { lat: 39, lng: -75 };
+        var toLocation = { lat: 40.7127, lng: -74.0059 };
+
         return 20;
     }
 });
