@@ -15,11 +15,6 @@ if (Meteor.isClient) {
         GoogleMaps.maps.gmap.instance.panTo(center);
       };
     })
-    // function resizeIframe() {
-    //   $('canvas')window.innerWidth
-    //   window.innerHeight
-    // }
-    // Detect clicks on maps
   });
   Template.page_map.helpers({
     gmapOptions: function() {
@@ -30,6 +25,8 @@ if (Meteor.isClient) {
           google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
             placeMarker(event.latLng);
           })
+          
+      // Detect clicks on maps
           // Add a marker to the map once it's ready
           // var marker = new google.maps.Marker({
           //   position: map.options.center,
