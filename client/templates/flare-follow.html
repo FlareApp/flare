@@ -1,0 +1,20 @@
+<template name="page_flare_follow">
+    {{#contentFor "title"}} Follow {{/contentFor}}
+
+    <div class="row text-center">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <h2>
+                <span class="fa fa-location-arrow"></span> Distance
+            </h2>
+
+            <p class="lead">{{distance}} m</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <h2>
+                <span class="fa fa-compass"></span> Direction
+            </h2>
+
+            <p class="lead">{{heading}}&deg;</p>
+        </div>
+    </div>
+</template>

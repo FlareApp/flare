@@ -60,3 +60,17 @@ Template.registerHelper("formatLon", function(lon){
 
     return (Math.abs(lon)).toFixed(3) + "° " + direction;
 });
+
+// follow flare
+Template.page_flare_follow.helpers({
+    distance: function(){
+        var myLocation = Geolocation.latLng();
+        console.log(myLocation);
+        return 200;
+    },
+    heading: function(){
+        var myLocation = Geolocation.latLng();
+        console.log(myLocation);     
+        return 20;
+    }
+});
