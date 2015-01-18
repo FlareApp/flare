@@ -10,8 +10,6 @@ if(location.href.indexOf(localhost) > -1 && location.href != localhost){
     location.href = localhost;
 }
 
-console.log("PennApps");
-
 // user accounts
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
