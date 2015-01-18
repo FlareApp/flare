@@ -15,10 +15,11 @@ if (Meteor.isClient) {
         GoogleMaps.maps.gmap.instance.panTo(center);
       };
     })
+    // function resizeIframe() {
+    //   $('canvas')window.innerWidth
+    //   window.innerHeight
+    // }
     // Detect clicks on maps
-    google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
-      placeMarker(event.latLng);
-    }
   });
   Template.page_map.helpers({
     gmapOptions: function() {
@@ -26,6 +27,9 @@ if (Meteor.isClient) {
       if (GoogleMaps.loaded()) {
         // We can use the `ready` callback to interact with the map API on3ce the map is ready.
         GoogleMaps.ready('gmap', function(map) {
+          google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
+            placeMarker(event.latLng);
+          })
           // Add a marker to the map once it's ready
           // var marker = new google.maps.Marker({
           //   position: map.options.center,
