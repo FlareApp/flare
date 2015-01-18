@@ -37,6 +37,10 @@ body {
     right: 0;
 }
 
+#compass-arrow {
+    font-size: 15em;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -81,8 +85,8 @@ body {
     overflow: hidden;
 }
 
-.map-container iframe,   
-.map-container object,  
+.map-container iframe,
+.map-container object,
 .map-container embed {
     position: absolute;
     top: 0;

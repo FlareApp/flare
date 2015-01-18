@@ -79,8 +79,18 @@ Template.page_flare_follow.helpers({
         return 20;
     },
 
-    heading: function(){
-        return Session.get('cordovaHeading').magneticHeading;
+    compass: function(){
+        var heading = Session.get('cordovaHeading').magneticHeading;
+        return Math.round(heading);
+    },
+
+    arrowDirection: function(){
+        var realAngle = 20;
+        var myAngle = Math.round(Session.get('cordovaHeading').magneticHeading);
+
+        console.log(realAngle - myAngle);
+
+        return realAngle - myAngle;
     },
 
     isCordova: function(){

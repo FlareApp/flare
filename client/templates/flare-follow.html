@@ -2,24 +2,31 @@
     {{#contentFor "title"}} Follow {{/contentFor}}
 
     <div class="row text-center">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        {{#if isCordova}}
             <h2>
                 <span class="fa fa-location-arrow"></span> Distance
             </h2>
-
             <p class="lead">{{distance}} m</p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <h2>
-                <span class="fa fa-compass"></span> Direction
-            </h2>
 
-            <p class="lead">{{heading}}&deg;</p>
+            <span class="fa fa-long-arrow-up" id="compass-arrow"
+                style="transform: rotate({{arrowDirection}}deg);
+                -webkit-transform: rotate({{arrowDirection}}deg)"
+            ></span>
+        {{else}}
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h2>
+                    <span class="fa fa-location-arrow"></span> Distance
+                </h2>
 
-            {{#if isCordova}}
-                You're on PhoneGap, yo.
-                {{heading}}
-            {{/if}}
-        </div>
+                <p class="lead">{{distance}} m</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h2>
+                    <span class="fa fa-compass"></span> Direction
+                </h2>
+
+                <p class="lead">{{heading}}&deg;</p>
+            </div>
+        {{/if}}
     </div>
 </template>
