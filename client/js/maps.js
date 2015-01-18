@@ -5,19 +5,19 @@ function placeMarker(location) {
     map: GoogleMaps.maps.gmap.instance
   });
 }
-if (Meteor.isClient) {
-  Meteor.startup(function() {
-    GoogleMaps.load();
-    Tracker.autorun(function () {
-      console.info(Geolocation.latLng());
-      if (Geolocation.error() !== null) {
-        var center = new google.maps.LatLng(Geolocation.latLng().lat, Geolocation.latLng().lng);
-        GoogleMaps.maps.gmap.instance.panTo(center);
-      };
-    })
+
+Meteor.startup(function() {
+  GoogleMaps.load();
+  Tracker.autorun(function () {
+    console.info(Geolocation.latLng());
+    if (Geolocation.error() !== null) {
+      var center = new google.maps.LatLng(Geolocation.latLng().lat, Geolocation.latLng().lng);
+      GoogleMaps.maps.gmap.instance.panTo(center);
+    };
   });
-  Template.page_map.helpers({
-    gmapOptions: function() {
+});
+Template.page_map.helpers({
+  gmapOptions: function() {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
         // We can use the `ready` callback to interact with the map API on3ce the map is ready.
@@ -25,14 +25,20 @@ if (Meteor.isClient) {
           google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
             placeMarker(event.latLng);
           })
-          
-      // Detect clicks on maps
-          // Add a marker to the map once it's ready
-          // var marker = new google.maps.Marker({
-          //   position: map.options.center,
-          //   map: map.instance
-          // });
-      });
+        });
+
+            // add all the flares yo
+            var flareIds = Channels.findOne(currentChannelId).flares;
+            _.each(flareIds, function(id){
+              var flare = Flares.findOne(id);
+              var location = {
+                lat: flare.location.lat,
+                lng: flare.location.lon
+              };
+
+              placeMarker(location);
+            });
+          };
 
         // Map initialization options
         if (environment === 'production') {
@@ -51,5 +57,4 @@ if (Meteor.isClient) {
         };
       }
     }
-  });
-}
+  );
