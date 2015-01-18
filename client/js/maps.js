@@ -13,7 +13,7 @@ function placeMarker(flare) {
   var marker = new google.maps.Marker({
     position: location,
     map: GoogleMaps.maps.gmap.instance,
-    animation: google.maps.Animation.DROP,
+    // animation: google.maps.Animation.DROP,
     id: flare._id
   });
 
