@@ -64,13 +64,13 @@ Template.registerHelper("formatLon", function(lon){
 // follow flare
 Template.page_flare_follow.helpers({
     distance: function(){
-        var myLocation = Geolocation.latLng();
-        console.log(myLocation);
+        var myLocation = Geolocation.latLng(); //has .lat, .lng
+        var toLocation = { lat: 39, lng: -75 };
         return 200;
     },
     heading: function(){
-        var myLocation = Geolocation.latLng();
-        console.log(myLocation);     
+        var myLocation = Geolocation.latLng(); //has .lat, .lng
+        var toLocation = { lat: 39, lng: -75 };
         return 20;
     }
 });
