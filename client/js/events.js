@@ -1,16 +1,5 @@
 // event handlers
 
-_.delay(function(){
-    $('#nav-left').click(function(){
-        console.log('<<');
-        $('body').trigger('swipeRight');
-    });
-    $('#nav-right').click(function(){
-        console.log('>>');
-        $('body').trigger('swipeLeft');
-    });
-}, 500);
-
 // channels
 Template.page_channels.events({
     'submit #channel-add': function(e){
