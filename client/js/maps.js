@@ -1,5 +1,5 @@
 // this accepts the format {lat: 0.0, lng: 0.0}
-function addMarker(location) {
+function placeMarker(location) {
   var marker = new google.maps.Marker({
     position: location,
     map: GoogleMaps.maps.gmap.instance
@@ -15,6 +15,10 @@ if (Meteor.isClient) {
         GoogleMaps.maps.gmap.instance.panTo(center);
       };
     })
+    // Detect clicks on maps
+    google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
+      placeMarker(event.latLng);
+    }
   });
   Template.page_map.helpers({
     gmapOptions: function() {
@@ -27,7 +31,7 @@ if (Meteor.isClient) {
           //   position: map.options.center,
           //   map: map.instance
           // });
-        });
+      });
 
         // Map initialization options
         if (environment === 'production') {
