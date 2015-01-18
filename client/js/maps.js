@@ -1,8 +1,12 @@
-// this accepts the format {lat: 0.0, lng: 0.0}
-function placeMarker(location) {
+function placeMarker(flare) {
+    var location = {
+        lat: flare.location.lat,
+        lng: flare.location.lon
+    };
   var marker = new google.maps.Marker({
     position: location,
-    map: GoogleMaps.maps.gmap.instance
+    map: GoogleMaps.maps.gmap.instance,
+    id: flare._id
   });
 }
 
@@ -22,23 +26,15 @@ Template.page_map.helpers({
       if (GoogleMaps.loaded()) {
         // We can use the `ready` callback to interact with the map API on3ce the map is ready.
         GoogleMaps.ready('gmap', function(map) {
-          google.maps.event.addListener(GoogleMaps.maps.gmap.instance, 'click', function(event) {
-            placeMarker(event.latLng);
-          })
-        });
 
             // add all the flares yo
             var flareIds = Channels.findOne(currentChannelId).flares;
             _.each(flareIds, function(id){
-              var flare = Flares.findOne(id);
-              var location = {
-                lat: flare.location.lat,
-                lng: flare.location.lon
-              };
-
-              placeMarker(location);
+                var flare = Flares.findOne(id);
+                placeMarker(flare);
             });
-          };
+        });
+    }
 
         // Map initialization options
         if (environment === 'production') {
