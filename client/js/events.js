@@ -48,6 +48,20 @@ Template.page_map.events({
 
         // Set the active flare
         Session.set('activeFlareId', id);
+    },
+    'submit #flare-edit': function(e) {
+        // grab text
+        var text = e.target.text.value;
+
+        // update the flare
+        Flares.update(Session.get('activeFlareId'), {
+            $set: { text: text }
+        });
+
+        // reset view
+        e.target.text.value = '';
+
+        return false;
     }
 });
 
